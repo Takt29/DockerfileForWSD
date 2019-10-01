@@ -1,0 +1,7 @@
+
+cabocha-*.tar.bz2
+CRF++-*.tar.gz
+/workspace
+
+# MacOS
+.DS_Store
