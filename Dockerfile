@@ -23,6 +23,8 @@ RUN source ~/.bash_profile && pyenv install anaconda3-2019.07 && pyenv global an
 RUN apt install -y mecab libmecab-dev mecab-ipadic-utf8 mecab-naist-jdic
 RUN git clone https://github.com/neologd/mecab-ipadic-neologd.git
 RUN cd mecab-ipadic-neologd/ && ./bin/install-mecab-ipadic-neologd -n -y --ignore_noun_ortho --ignore_noun_sahen_conn_ortho
+RUN sed -i.back \
+    -e "s:^dicdir = .*$:dicdir = /var/lib/mecab/dic/naist-jdic:" /etc/mecabrc
 
 # install natto
 
