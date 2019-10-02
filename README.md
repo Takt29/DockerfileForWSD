@@ -9,7 +9,7 @@
 ```bash
 ./download_files.sh #CFR++とcabochaをDL
 docker build . -t wsd
-./start_docker.sh # ./workspace をマウントして起動
+./run_container.sh # ./workspace をマウントして起動
 ```
 
 
