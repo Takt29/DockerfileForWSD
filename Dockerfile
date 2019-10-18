@@ -58,6 +58,11 @@ RUN source ~/.bash_profile && jupyter notebook --generate-config \
     -e "s:^#c.NotebookApp.notebook_dir = .*$:c.NotebookApp.notebook_dir = '${HOME}/workspace':" \
     ${HOME}/.jupyter/jupyter_notebook_config.py
 
+RUN source ~/.bash_profile && conda install -y -c conda-forge jupyter_contrib_nbextensions
+
+# install graphviz
+RUN source ~/.bash_profile && apt install -y graphviz && pip install dtreeviz
+
 # setup docker
 
 ENTRYPOINT [ "/bin/bash", "-c" ]
