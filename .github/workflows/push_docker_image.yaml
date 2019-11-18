@@ -9,6 +9,7 @@ env:
   DOCKER_BUILDKIT: 1
   IMAGE_NAME: wsd2019
   IMAGE_TAG: latest
+  REPO
 
 jobs:
   build:
@@ -19,6 +20,6 @@ jobs:
       - name: Login GitHub Registry
         run: docker login docker.pkg.github.com -u owner -p ${{ secrets.GITHUB_TOKEN }}
       - name: Build image
-        run: docker build -t docker.pkg.github.com/${{ github.repository }}/${IMAGE_NAME}:${IMAGE_TAG} --file Dockerfile .
+        run: docker build -t docker.pkg.github.com/${{ github.repository,, }}/${IMAGE_NAME}:${IMAGE_TAG} --file Dockerfile .
       - name: Push image to GitHub Registry
-        run: docker push docker.pkg.github.com/${{ github.repository }}/${IMAGE_NAME}:${IMAGE_TAG}
+        run: docker push docker.pkg.github.com/${{ github.repository,, }}/${IMAGE_NAME}:${IMAGE_TAG}
