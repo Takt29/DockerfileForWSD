@@ -9,7 +9,6 @@ env:
   DOCKER_BUILDKIT: 1
   IMAGE_NAME: wsd2019
   IMAGE_TAG: latest
-  REPO
 
 jobs:
   build:
