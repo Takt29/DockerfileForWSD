@@ -16,11 +16,11 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
+      - name: Translate repository name
+        run: export REPO=`echo ${{ github.repository }} | tr [:upper:] [:lower:]`
       - name: Login GitHub Registry
         run: "docker login docker.pkg.github.com -u owner -p ${{ secrets.GITHUB_TOKEN }}"
       - name: Build image
-        run: |
-          export REPO=`echo ${{ github.repository }} | tr [:upper:] [:lower:]`
-          docker build -t docker.pkg.github.com/${REPO}/${IMAGE_NAME}:${IMAGE_TAG} --file Dockerfile .
+        run: docker build -t docker.pkg.github.com/${REPO}/${IMAGE_NAME}:${IMAGE_TAG} --file Dockerfile ."
       - name: Push image to GitHub Registry
         run: "docker push docker.pkg.github.com/${REPO}/${IMAGE_NAME}:${IMAGE_TAG}"
