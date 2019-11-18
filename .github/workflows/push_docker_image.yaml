@@ -1,8 +1,9 @@
 name: Push Docker image to Github Registry
 
-on: push
-branches:
-  - master
+on:
+  push:
+    branches:
+      - master
 
 env:
   DOCKER_BUILDKIT: 1
